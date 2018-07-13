@@ -1,0 +1,89 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+
+  <div class="container">
+    <h2> Welcome to {{ title }}! </h2>
+
+    <h3>Create Employee</h3>
+
+    <div class="message"><b>{{ message }}</b></div>
+
+
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+      <div>
+        <label>Name*  </label>
+        <input formControlName="name" id="name"/>
+      </div>
+      <div class="invalid" *ngIf="employeeForm.controls['name'].invalid">
+        Name is required.
+      </div>
+
+      <div>
+        <label>Surname*  </label>
+        <input formControlName="surname" id="surname"/>
+      </div>
+      <div class="invalid" *ngIf="employeeForm.controls['surname'].invalid">
+        Surname is required.
+      </div>
+
+      <div>
+        <label>Country  </label>
+        <input formControlName="country" id="country"/>
+      </div>
+
+      <div>
+        <label>Birth Date  </label>
+        <input type="date" formControlName="birthDate" id="birthDate"/>
+      </div>
+
+      <div>
+        <label>Marital Status*  </label>
+        <!--{{employee.maritalStatus.status}}-->
+        <select formControlName="maritalStatus" id="maritalStatus">
+          <!--<option *ngFor="let ms of maritalStatues" [value]="ms.maritalStatusId">-->
+          <option *ngFor="let ms of maritalStatues" [ngValue]="ms">
+            {{ms.status}}
+          </option>
+        </select>
+      </div>
+      <div class="invalid" *ngIf="employeeForm.controls['maritalStatus'].invalid">
+        Status is required.
+      </div>
+
+
+      <div >
+        <label>Skills </label>
+        <select #newSkillSelect >
+          <option *ngFor="let sk of skills" [value]="sk.name">
+            {{ sk.name }}
+          </option>
+        </select>
+        <button type="button" (click)="addSkill(newSkillSelect.value)">Add skill</button>
+      </div>
+
+      <br>
+      <div formArrayName="skillArray">
+        <label><b>Employee skills:</b></label><br><br>
+        <div *ngFor="let name of employeeForm.controls.skillArray.controls; let i=index" [formGroupName]="i">
+          <input class="input-skill" formControlName="name" disabled >
+          <a class="button-remove" (click)="removeSkill(i)">Remove</a>
+        </div>
+      </div>
+
+
+      <div>
+      <br>
+      <input style="color: #4183c4" value="Save" type="submit"/>
+      <br><br>
+        <button class="button-back" uiSref="employees" uiSrefActive="active">Back</button>
+      <!--<a class="button-back" routerLink="/">Back</a>-->
+    </div>
+
+      <p>Form value: {{ employeeForm.value | json }}</p>
+    </form>
+
+  </div>
+
+</div>
+

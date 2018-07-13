@@ -1,0 +1,46 @@
+table {
+  border-radius: 10px;
+  background: #F5F5F5;
+  width: 100%;
+}
+th{
+  padding: 10px;
+  border-radius: 4px;
+}
+.heading {
+  background-color: #DCDCDC;
+}
+.tableBody{
+
+}
+.search{
+  border-radius: 4px;
+  height: 25px;
+  
+}
+.button-edit{
+  background: #4183c4;
+  border-radius: 4px;
+  padding: 5px;
+  color: white;
+  margin: auto;
+  width: 45%;
+
+}
+.button-delete{
+  background: #a61717;
+  border-radius: 4px;
+  padding: 5px;
+  color: white;
+  margin: auto;
+  width: 45%;
+}
+.boxNew{
+  background: black;
+  border-radius: 4px;
+  padding: 7px;
+  color: white;
+}
+.container{
+  font-family: Arial, Helvetica, sans-serif;
+}

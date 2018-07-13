@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Home Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <h2>Employees</h2>
+    <br>
+    <!--<div>-->
+        <!--<h3>Search</h3>-->
+
+        <!--<form action="#" method="get" th:action="@{'/home/'+${filter}}">-->
+            <!--<div class="form-group">-->
+                <!--<input type="text" th:field="*{filter}">-->
+                <!--&lt;!&ndash;<input name="filter" type="text">&ndash;&gt;-->
+                <!--<button class="btn btn-default">Search</button>-->
+                <!--<a class="btn btn-link" th:href="@{'/home'}">clear</a>-->
+                <!--&lt;!&ndash;<a href="/home" class="btn btn-link">clear</a>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</form>-->
+    <!--</div>-->
+    <br>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Country</th>
+            <th>Birth Date</th>
+            <th>Marital Status</th>
+            <th>Skills</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody th:each="employee: ${employees}">
+        <tr>
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.surname}"></td>
+            <td th:text="${employee.country}"></td>
+            <td th:text="${employee.birthDate}"></td>
+            <td th:text="${employee.maritalStatus.status}"></td>
+            <td>
+                <div th:each="skill: ${employee.skills}">
+                    <span th:text="${skill.name}"></span>
+                </div>
+            </td>
+            <td>
+                <a class="btn btn-primary" th:href="@{'/update/'+${employee.employeeId}}">Edit</a>
+                <a class="btn btn-danger" th:href="@{'/delete/'+${employee.employeeId}}">Delete</a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

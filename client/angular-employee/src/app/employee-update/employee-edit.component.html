@@ -1,0 +1,101 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+
+<div class="container">
+
+  <div class="message"><b>{{ message }}</b></div>
+
+  <h3>Update Employee:</h3>
+
+  <div class="body">
+
+
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+
+      <div class="grid-item">
+        <label class="row-item">Name*</label>
+        <div class="input-div">
+          <input class="input-gen" formControlName="name" id="name" />
+        </div>
+      </div>
+
+      <div class="invalid" *ngIf="employeeForm.controls['name'].invalid">
+        Name is required.
+      </div>
+
+      <div class="grid-item">
+        <label class="row-item">Surname*</label>
+        <div class="input-div">
+          <input class="input-gen" formControlName="surname" id="surname"/>
+        </div>
+      </div>
+      <div class="invalid" *ngIf="employeeForm.controls['surname'].invalid">
+        Surname is required.
+      </div>
+
+      <div class="grid-item">
+        <label class="row-item">Country</label>
+        <div class="input-div">
+          <input class="input-gen" formControlName="country" id="country"/>
+        </div>
+      </div>
+
+
+      <div class="grid-item">
+        <label class="row-item">Birth Date</label>
+        <div class="input-div">
+          <input class="input-gen" type="date" formControlName="birthDate" id="birthDate"/>
+        </div>
+      </div>
+
+      <div class="grid-item">
+        <label class="row-item">Marital Status</label>
+        <div class="input-div">
+          <select formControlName="maritalStatus" id="maritalStatus" [(ngModel)]="employee.maritalStatus">
+            <option value="default"> --</option>
+            <option *ngFor="let ms of maritalStatues" [ngValue]="ms">
+              {{ms.status}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="grid-item">
+        <label class="row-item">Skill</label>
+        <div class="input-div">
+          <select #newSkillSelect>
+            <option *ngFor="let sk of skills" [value]="sk.name">
+              {{ sk.name }}
+            </option>
+          </select><br>
+          <button (click)="addSkill(newSkillSelect.value)">Add skill</button>
+        </div>
+      </div>
+
+      <br>
+      <div class="grid-item" formArrayName="skillArray">
+        <label class="row-item">Your skills:</label><br><br>
+        <div *ngFor="let name of employeeForm.controls.skillArray.controls; let i=index" [formGroupName]="i">
+          <input class="input-skill" formControlName="name" disabled>
+          <a class="button-remove" (click)="removeSkill(i)">Remove</a>
+        </div>
+      </div>
+
+
+      <div>
+        <br>
+        <input style="color: #4183c4" value="Save" type="submit"/>
+        <button class="button-back" uiSref="employees" uiSrefActive="active">Back</button>
+      </div>
+
+      <p>Form value: {{ employeeForm.value | json }}</p>
+    </form>
+
+
+  </div> <!--fine body-->
+</div>
+
+
+

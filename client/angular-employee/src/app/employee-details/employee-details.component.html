@@ -1,0 +1,22 @@
+<div class="container">
+
+
+  <h4>Employee Details:</h4>
+
+  <!--<div [ngModel]="employee">-->
+  <div>
+    <p><b>Name:</b> {{employee.name}}</p>
+    <p><b>Surname:</b> {{employee.surname}}</p>
+    <p><b>Country:</b> {{employee.country}}</p>
+    <p><b>Birth Date:</b> {{employee.birthDate}}</p>
+    <p><b>Marital Status:</b> {{employee.maritalStatus.status}}</p>
+    <b>Skills:</b>
+    <ul *ngFor="let sk of employee.skills">
+      {{sk.name}}
+    </ul>
+  </div>
+  <br><br>
+  <button class="button" style="vertical-align:middle" uiSref="employees"><span>Back </span></button>
+</div>
+
+

@@ -1,0 +1,72 @@
+
+.invalid{
+  color: red;
+}
+.button-remove{
+  background: #a61717;
+  border-radius: 4px;
+  padding: 5px;
+  color: white;
+}
+.input-skill{
+  max-width: 100px;
+  border-radius: 4px;
+  padding: 5px;
+}
+.input-gen{
+  max-width: 300px;
+  min-width: 200px;
+  border-radius: 2px;
+  padding: 2px;
+  /*margin-left: 100px;*/
+}
+
+.message{
+  color: blueviolet;
+  font-size: 18px;
+}
+.container{
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px 300px 10px 300px;
+  text-align: center;
+}
+.button-back{
+  background: #777777;
+  border-radius: 4px;
+  padding: 5px;
+  color: white;
+}
+
+.container{
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px 300px 10px 300px;
+}
+.body{
+  background-color: #4183c4;
+  min-width: 300px;
+  display: grid;
+  grid-column-gap: 15px;
+  grid-template-columns: auto auto;
+}
+.grid-item {
+  /*background-color: rgba(255, 255, 255, 0.8);*/
+  /*border: 1px solid rgba(0, 0, 0, 0.8);*/
+  padding: 5px;
+  text-align: center;
+}
+label{
+  float: left;
+}
+.input-div{
+  /*background-color: chocolate;*/
+  margin-left: 200px;
+}
+.row-item{
+  margin-left: 50px;
+}
+select{
+  max-width: 300px;
+  min-width: 200px;
+  border-radius: 2px;
+  padding: 2px;
+}

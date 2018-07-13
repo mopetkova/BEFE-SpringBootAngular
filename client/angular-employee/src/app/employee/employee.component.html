@@ -1,0 +1,64 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+
+  <div class="container">
+    <h3>Employee List</h3>
+
+    <div class="message"><b>{{ message }}</b></div>
+    <!--<input type="text" id="searchTextId" [(ngModel)]="searchText" name="searchText" placeholder="Search By Name"><br>-->
+    <br>
+
+    <div>
+      <input class="search" type="text" placeholder="Search.." #searchBar (keyup)="0" value="">
+      <button class="boxNew" uiSref="create" uiSrefActive="active"> Create</button>
+      <!--<button class="boxNew" routerLink="/employee/create">New Employee</button>-->
+    </div>
+
+    <br>
+    <table>
+      <thead class="heading">
+      <tr>
+        <th>Details</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Country</th>
+        <th>Birth Date</th>
+        <th>Marital Status</th>
+        <th>Skills</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody class="tableBody">
+      <tr *ngFor="let e of  (employees | employeeFilter: searchBar.value) ">
+
+        <td>
+          <button uiSref="details" [uiParams]="{ employeeId: e.employeeId }" uiSrefActive="active">{{e.employeeId}} </button>
+          <!--<td><a routerLink="/employee/{{e.employeeId}}">{{e.employeeId}}</a></td>-->
+        </td>
+        <td>{{e.name}}</td>
+        <td>{{e.surname}}</td>
+        <td>{{e.country}}</td>
+        <td>{{e.birthDate}}</td>
+        <td>{{e.maritalStatus.status}}</td>
+        <td>
+          <span *ngFor="let skill of e.skills">
+            {{skill.name}},
+          </span>
+        </td>
+
+        <td>
+          <button uiSref="update" [uiParams]="{ employeeId: e.employeeId }" uiSrefActive="active" class="button-edit"> Update </button>
+          <button uiSref="delete" [uiParams]="{ employeeId: e.employeeId }" uiSrefActive="active" class="button-delete"> Delete </button>
+          <!--<button routerLink="/employee/update/{{e.employeeId}}" class="button-edit">Edit</button>-->
+          <!--<button (click)="delete(e.employeeId)" class="button-delete">Delete</button>-->
+        </td>
+
+      </tbody>
+
+    </table>
+
+
+  </div>
+
+</div>
+
